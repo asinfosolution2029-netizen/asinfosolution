@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Home - AS Info Solution</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ========== Global Styles ========== */
+    :root {
+      --primary: #6c4ee3;
+      --secondary: #9d6cf0;
+      --accent: #ffb347;
+      --text-dark: #333;
+      --bg-light: #fafaff;
+      --gradient: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* ========== Header ========== */
+    header.site-header {
+      background: var(--gradient);
+      color: white;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+      animation: gradientShift 8s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-wrapper img {
+      height: 55px;
+      width: 55px;
+      border-radius: 50%;
+      background: white;
+      object-fit: cover;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .company-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, #ffcc70, #ff7a7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav a:hover {
+      color: #ffcc70;
+      transform: scale(1.1);
+    }
+
+    /* ========== Hero Section ========== */
+    .hero {
+      text-align: center;
+      padding: 120px 20px 100px;
+      background: radial-gradient(circle at top left, var(--secondary), var(--primary), #32107a);
+      color: white;
+      border-radius: 0 0 80px 80px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero h2 {
+      font-size: 45px;
+      text-transform: uppercase;
+      animation: fadeDown 1.2s ease both;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 15px auto;
+      opacity: 0;
+      animation: fadeUp 1.5s ease 0.4s forwards;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff7a7a, #ffcc70);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 25px;
+      transition: 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      opacity: 0;
+      animation: fadeUp 1.5s ease 0.8s forwards;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255,122,122,0.5);
+    }
+
+    /* ========== Featured Services ========== */
+    .featured {
+      margin-top: 70px;
+      text-align: center;
+    }
+
+    .featured h3 {
+      font-size: 30px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .featured h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      width: 60%;
+      margin: auto;
+      background: var(--gradient);
+      border-radius: 3px;
+      animation: slideLine 3s infinite linear;
+    }
+
+    @keyframes slideLine {
+      0% { width: 20%; }
+      50% { width: 80%; }
+      100% { width: 20%; }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(140,92,240,0.2), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(108,78,227,0.25);
+    }
+
+    .card h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p { color: #555; min-height: 60px; }
+
+    .card a {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      margin: 5px;
+    }
+
+    .card a:hover {
+      background: var(--primary);
+      transform: scale(1.05);
+    }
+
+    /* ========== Floating Buttons ========== */
+    .float-btn, .whatsapp-float {
+      position: fixed;
+      right: 25px;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 35px;
+      font-weight: 600;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      text-decoration: none;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    .float-btn {
+      bottom: 25px;
+      background: var(--gradient);
+    }
+
+    .whatsapp-float {
+      bottom: 85px;
+      background: #25d366;
+    }
+
+    .float-btn:hover, .whatsapp-float:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    /* ========== Footer ========== */
+    footer.site-footer {
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      margin-top: 80px;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 34px; }
+      .hero p { font-size: 16px; }
+      .nav a { margin: 6px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-wrapper">
+        <img src="assets/images/logo.jpeg" alt="AS Info Solution Logo">
+        <span class="company-name">AS Info Solution</span>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Welcome to AS Info Solution</h2>
+      <p>Empowering your career with professional training, real-time projects, and cutting-edge software solutions.</p>
+      <a class="btn" href="courses.html">Explore Courses</a>
+    </section>
+
+    <section class="featured">
+      <h3>Our Services</h3>
+      <div class="grid" id="services-grid">
+        <!-- Cards will load here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Buttons -->
+  <a href="https://wa.me/9190425 04988?text=Hello%20AS%20Info%20Solution%2C%20I%27m%20interested%20in%20your%20courses."
+     class="whatsapp-float" target="_blank">💬 WhatsApp</a>
+
+  <a href="contact.html" class="float-btn">📞 Enquiry Now</a>
+
+  <footer class="site-footer">
+    <div class="container">&copy; 2025 AS Info Solution | Designed with ❤️ by AS Team</div>
+  </footer>
+
+  <script>
+    const services = [
+      { title: "Academic & Company Projects", desc: "Website development, software solutions, E-commerce systems, and project maintenance support." },
+      { title: "All Software Courses", desc: "C, C++, Java, Python, SQL, Computer Basics, and MS Office from beginner to advanced levels." },
+      { title: "Advanced Courses", desc: "Python Full Stack, Java Full Stack, .NET Full Stack, AI/ML, and Data Science mastery programs." },
+      { title: "Web Development", desc: "HTML, CSS, JavaScript, PHP, and responsive design for stunning and scalable websites." },
+      { title: "Data Analytics", desc: "Data visualization, BI tools, and performance analytics for smarter business decisions." },
+      { title: "Power BI", desc: "Interactive dashboards with Excel, SQL, and real-time data sources for dynamic reporting." },
+    ];
+
+    const grid = document.getElementById('services-grid');
+    grid.innerHTML = services.map(s => `
+      <article class="card">
+        <h4>${s.title}</h4>
+        <p>${s.desc}</p>
+        <a href="contact.html">Enquiry</a>
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hello%20AS%20Info%20Solution%2C%20I%27m%20interested%20in%20${encodeURIComponent(s.title)}"
+           target="_blank" style="background:#25d366;">WhatsApp</a>
+      </article>
+    `).join('');
+
+    // Fade-in effect on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.opacity = 0;
+      card.style.transform = "translateY(30px)";
+      observer.observe(card);
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+      .card.visible { opacity: 1 !important; transform: translateY(0) !important; transition: all 0.8s ease; }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

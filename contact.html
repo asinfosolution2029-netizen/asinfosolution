@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Us - AS Info Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Global Styles ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f3f4ff, #ffffff);
+      color: #333;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* ===== Header Section ===== */
+    header.site-header {
+      background: linear-gradient(90deg, #5b3cc4, #8c5cf0);
+      color: white;
+      padding: 12px 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 0.8s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== Logo & Company ===== */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-wrapper img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: white;
+      padding: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .company-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, #ffcc70, #ff7a7a, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ===== Navigation ===== */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #ffcc70;
+      transition: width 0.3s;
+    }
+
+    .nav a:hover {
+      color: #ffcc70;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== Contact Section ===== */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      min-height: 80vh;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #666;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .contact-box {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      padding: 40px 50px;
+      width: 100%;
+      max-width: 550px;
+      animation: fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 500;
+      color: #444;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: 1.5px solid #ddd;
+      transition: all 0.3s ease;
+      font-size: 15px;
+      resize: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 6px rgba(106,17,203,0.3);
+      outline: none;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #ff7a7a, #ffcc70);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(90deg, #ffcc70, #ff7a7a);
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      color: green;
+      font-weight: 600;
+      margin-top: 15px;
+      animation: fadeUp 0.8s ease;
+    }
+
+    /* ===== Footer ===== */
+    footer.site-footer {
+      background: linear-gradient(90deg, #5b3cc4, #8c5cf0);
+      color: white;
+      text-align: center;
+      padding: 18px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      margin-top: 50px;
+      font-weight: 500;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .contact-box {
+        padding: 30px 25px;
+      }
+      h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-wrapper">
+        <img src="assets/images/logo.jpeg" alt="AS Info Solution Logo">
+        <span class="company-name">AS Info Solution</span>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Contact Form ===== -->
+  <main>
+    <h2>Get in Touch</h2>
+    <p class="subtitle">We’d love to hear from you! Please fill out the form below and our team will get back to you shortly.</p>
+
+    <div class="contact-box">
+      <form id="contactForm">
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label>Message</label>
+        <textarea id="message" rows="5" placeholder="Type your message..." required></textarea>
+
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+
+      <p class="success-message" id="successMsg">✅ Message sent successfully!</p>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">&copy; 2025 AS Info Solution | Designed with ❤️ by AS Team</div>
+  </footer>
+
+  <!-- ===== JavaScript for Form Interaction ===== -->
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert("⚠️ Please fill all fields before submitting.");
+        return;
+      }
+
+      form.querySelector('.btn').innerText = "Sending...";
+      form.querySelector('.btn').disabled = true;
+      form.style.opacity = "0.6";
+
+      // Simulate sending message
+      setTimeout(() => {
+        form.reset();
+        form.style.opacity = "1";
+        form.querySelector('.btn').innerText = "Send Message";
+        form.querySelector('.btn').disabled = false;
+        successMsg.style.display = "block";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

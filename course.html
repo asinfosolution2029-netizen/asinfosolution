@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Course Enrollment - AS Info Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Global Styles ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f3f4ff, #ffffff);
+      margin: 0;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* ===== Header Section ===== */
+    header.site-header {
+      background: linear-gradient(90deg, #5b3cc4, #8c5cf0);
+      color: white;
+      padding: 15px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 0.8s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-wrapper img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      background: white;
+      padding: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      object-fit: cover;
+    }
+
+    .company-name {
+      font-size: 26px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, #ffcc70, #ff7a7a, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #ffcc70;
+      transition: width 0.3s;
+    }
+
+    .nav a:hover {
+      color: #ffcc70;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== Enrollment Section ===== */
+    main {
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      background: radial-gradient(circle at top right, #e9e4ff, #ffffff);
+    }
+
+    .enroll-box {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      padding: 40px 50px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      animation: fadeUp 1.2s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .enroll-box h3 {
+      font-size: 28px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .enroll-box p {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      text-align: left;
+      font-weight: 500;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: 1.5px solid #ddd;
+      transition: all 0.3s ease;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 6px rgba(106,17,203,0.3);
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #ff7a7a, #ffcc70);
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(90deg, #ffcc70, #ff7a7a);
+    }
+
+    .success-message {
+      display: none;
+      color: green;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* ===== Footer ===== */
+    footer.site-footer {
+      background: linear-gradient(90deg, #5b3cc4, #8c5cf0);
+      color: white;
+      text-align: center;
+      padding: 18px;
+      margin-top: 50px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      font-weight: 500;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .enroll-box {
+        padding: 30px 25px;
+      }
+      .enroll-box h3 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-wrapper">
+        <img src="assets/images/logo.jpeg" alt="AS Info Solution Logo">
+        <span class="company-name">AS Info Solution</span>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Enrollment Form ===== -->
+  <main>
+    <div class="enroll-box">
+      <h3>Enroll Now</h3>
+      <p>Fill out the form below to register for your chosen course. Our team will contact you shortly!</p>
+
+      <form id="enrollForm">
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email address" required>
+
+        <label>Phone</label>
+        <input type="text" id="phone" placeholder="Enter your phone number" required>
+
+        <button class="btn" type="submit">Submit Enrollment</button>
+      </form>
+
+      <p class="success-message" id="successMsg">✅ Enrollment submitted successfully!</p>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">&copy; 2025 AS Info Solution | Designed with ❤️ by AS Team</div>
+  </footer>
+
+  <!-- ===== JavaScript for Form Animation ===== -->
+  <script>
+    const form = document.getElementById('enrollForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Simple validation effect
+      form.style.opacity = "0.6";
+      form.querySelector(".btn").disabled = true;
+      form.querySelector(".btn").innerText = "Submitting...";
+
+      setTimeout(() => {
+        form.reset();
+        form.style.opacity = "1";
+        form.querySelector(".btn").disabled = false;
+        form.querySelector(".btn").innerText = "Submit Enrollment";
+        successMsg.style.display = "block";
+        successMsg.style.animation = "fadeUp 0.6s ease";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
